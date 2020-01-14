@@ -534,10 +534,6 @@ if (NOT RSTUDIO_SESSION_WIN32)
    install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/dictionaries"
            DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
 
-   # install mathjax for local html preview
-   install(DIRECTORY "${MATHJAX_PATH}"
-           DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
-
    # icons for database connections
    install(DIRECTORY "resources/connections"
            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
@@ -549,14 +545,6 @@ if (NOT RSTUDIO_SESSION_WIN32)
    # dependency data
    install(DIRECTORY "resources/dependencies"
            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
-
-   # install pandoc
-   set(PANDOC_BIN "${RSTUDIO_DEPENDENCIES_DIR}/common/pandoc/${PANDOC_VERSION}")
-   file(GLOB PANDOC_FILES "${PANDOC_BIN}/pandoc*")
-   set(PANDOC_FILES ${PANDOC_CITEPROC_BIN_LOCATION} ${PANDOC_BIN_LOCATION})
-   install(FILES ${PANDOC_FILES}
-           PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
-           DESTINATION  ${RSTUDIO_INSTALL_BIN}/pandoc)
 
    # install embedded packages
    foreach(PKG ${RSTUDIO_EMBEDDED_PACKAGES})
