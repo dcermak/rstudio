@@ -27,6 +27,7 @@
 #include <core/system/Xdg.hpp>
 
 #include <boost/algorithm/string.hpp>
+#include <boost/bind.hpp>
 
 // borrowed from SessionConstants.hpp
 #define kRStudioSessionRoute "RSTUDIO_SESSION_ROUTE"

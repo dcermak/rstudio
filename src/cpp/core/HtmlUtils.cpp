@@ -18,6 +18,7 @@
 #include <core/system/System.hpp>
 
 #include <boost/format.hpp>
+#include <boost/bind.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 
 #include <core/Base64.hpp>
