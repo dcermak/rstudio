@@ -195,11 +195,10 @@ public:
 
    Error wordChars(std::wstring *pWordChars)
    {
-      int len;
-      unsigned short *pChars = pHunspell_->get_wordchars_utf16(&len);
+      const std::vector<w_char> &pChars = pHunspell_->get_wordchars_utf16();
 
-      for (int i = 0; i < len; i++)
-         pWordChars->push_back(pChars[i]);
+      for (w_char pChar : pChars)
+         pWordChars->push_back((pChar.h << 8) + pChar.l);
 
       return Success();
    }

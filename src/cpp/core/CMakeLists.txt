@@ -15,7 +15,11 @@
 
 project (CORE)
 
-add_subdirectory(spelling/hunspell)
+add_library(rstudio-core-hunspell SHARED IMPORTED GLOBAL)
+find_library(HUNSPELL_LIB NAMES hunspell REQUIRED)
+set_target_properties(rstudio-core-hunspell PROPERTIES
+                      IMPORTED_LOCATION "${HUNSPELL_LIB}")
+
 add_subdirectory(tex/synctex)
 
 # include files
