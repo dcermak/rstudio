@@ -35,6 +35,7 @@
 
 #include "clang-c/Index.h"
 #include "clang-c/CXCompilationDatabase.h"
+#include "clang-c/Documentation.h"
 
 namespace rstudio {
 namespace core {

@@ -58,12 +58,11 @@ std::vector<std::string> defaultCompileArgs(LibraryVersion version)
 
    // we need to add in the associated libclang headers as
    // they are not discovered / used by default during compilation
-   FilePath llvmPath = s_libraryPath.getParent().getParent();
-   boost::format fmt("%1%/lib/clang/%2%/include");
+   FilePath llvmPath = s_libraryPath.getParent();
+   boost::format fmt("%1%/clang/%2%/include");
    fmt % llvmPath.getAbsolutePath() % version.asString();
    std::string includePath = fmt.str();
-   if (FilePath(includePath).exists())
-     compileArgs.push_back(std::string("-I") + includePath);
+   compileArgs.push_back(std::string("-I") + includePath);
 
    return compileArgs;
 }
@@ -85,12 +84,9 @@ std::vector<std::string> systemClangVersions()
 #elif defined(__unix__)
    // default set of versions
    clangVersions = {
-      "/usr/lib/libclang.so",
-      "/usr/lib/llvm/libclang.so",
-      "/usr/lib64/libclang.so",
-      "/usr/lib64/llvm/libclang.so",
+      "LIBCLANG_PLACEHOLDER",
    };
-   
+#elif 0
    // iterate through the set of available 'llvm' directories
    for (const char* prefix : {"/usr/lib", "/usr/lib64"})
    {
