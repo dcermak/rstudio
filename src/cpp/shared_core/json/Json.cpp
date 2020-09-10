@@ -795,7 +795,7 @@ std::string Value::write() const
    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
 
    m_impl->Document->Accept(writer);
-   return std::string(buffer.GetString(), buffer.GetLength());
+   return std::string(buffer.GetString(), buffer.GetSize() / sizeof(rapidjson::StringBuffer::Ch));
 }
 
 void Value::write(std::ostream& os) const
@@ -809,7 +809,7 @@ std::string Value::writeFormatted() const
    rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(buffer);
 
    m_impl->Document->Accept(writer);
-   return std::string(buffer.GetString(), buffer.GetLength());
+   return std::string(buffer.GetString(), buffer.GetSize() / sizeof(rapidjson::StringBuffer::Ch));
 }
 
 void Value::writeFormatted(std::ostream& os) const
